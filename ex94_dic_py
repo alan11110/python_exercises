@@ -1,0 +1,43 @@
+#Exercício Python 094: Crie um programa que leia nome, sexo e idade de várias pessoas, guardando os dados de cada pessoa em um dicionário e todos os dicionários em uma lista. 
+#No final, mostre: A) Quantas pessoas foram cadastradas B) A média de idade C) Uma lista com as mulheres D) Uma lista de pessoas com idade acima da média
+
+
+
+qtd_pessoas = 0
+soma_idade = 0
+media_idade = 0
+soma_m = 0
+soma_f = 0
+continuar = 0
+todos = []
+
+cont_nome = 0
+
+while continuar not in ['n','N',]:
+    
+    pessoas = {}
+    pessoas['nome'] = str(input('Digite o nome: '))
+    sexo = input('Digite o sexo[F/M]: ') #MENSAGEM PARA CONTINUAR OU NÃO
+    while sexo not in ['F','m','F','f']:
+        print('ERRO - DIGITE SOMENTE [F/M]')
+        sexo = input('Digite o sexo[F/M]: ')
+    pessoas['sexo'] = sexo
+    pessoas['idade'] = int(input('Digite sua idade: '))
+    todos.append(pessoas)
+    continuar = input('Deseja continuar? ') #MENSAGEM PARA CONTINUAR OU NÃO
+    while continuar not in ['N','n','S','s']:
+        print('ERRO - DIGITE SOMENTE [S/N]')
+        continuar = input('Deseja continuar? ')
+    
+print('Progama encerrado')
+
+#MOSTRAR DIAGNOSTICO
+
+for i in todos:
+    soma_idade += i
+
+qtd_pessoas = len(todos)
+print(f'A) Ao todo, temos {len(todos)} pessoas cadastradas')
+print(f'B)  A média de idade dos cadastrados é de {soma_idade/len(todos)}')
+if 'm' or 'M' in pessoas['sexo']:
+    print(len(pessoas['sexo']))
